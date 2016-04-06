@@ -10,6 +10,7 @@ import org.jooq.SQLDialect;
 import org.jooq.impl.DSL;
 import org.jooq.impl.TableRecordImpl;
 import org.jooq.util.maven.example.tables.People;
+import spark.Spark;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -25,6 +26,8 @@ public class Main {
 
     ObjectMapper mapper = new ObjectMapper();
     mapper.setAnnotationIntrospector(new IgnoreInheritedIntrospector());
+
+    Spark.staticFileLocation("/public");
 
     get("/people", (req, res) -> {
       try (Connection conn = DriverManager.getConnection(url, userName, password)) {

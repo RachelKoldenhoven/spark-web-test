@@ -1,0 +1,21 @@
+<html>
+<head>
+    <title>Hello world!</title>
+    <script type="text/javascript">
+        "use strict";
+        let xmlhttp = new XMLHttpRequest();
+        let url = "/people";
+
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState != 4 || xmlhttp.status != 200)
+                return;
+            let people = JSON.parse(xmlhttp.responseText);
+            for (let person of people)
+                document.writeln(person.firstName + "<br/>");
+        };
+        xmlhttp.open("GET", url, true);
+        xmlhttp.send();
+    </script>
+</head>
+<body></body>
+</html>
